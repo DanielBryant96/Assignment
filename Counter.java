@@ -4,31 +4,57 @@ import java.util.ArrayList;
 
 public class Counter {
 
-    private int rows = -1;
-    private int characters = -4;
+
     ArrayList<String> charList = new ArrayList<>();
 
+    public boolean addString(String input) {
+        if (!input.equals("stop")) {
+            charList.add(input);
+            return true;
+        }
+        return false;
+    }
 
     public int getRows() {
-        return rows;
+        return charList.size();
     }
 
     public int getCharacters() {
-        return characters;
-    }
+        int characters = 0;
 
-    public void addRow() {
-        rows++;
-    }
-
-    public void addChars(String entry) {
-        charList.add(entry);
-    }
-
-    public void charSum() {
         for (String str : charList) {
             characters += str.length();
         }
+        return characters;
     }
+
+    public String getLongestWord() {
+        String longestWord = null;
+
+        for (String sentence : charList) {
+
+            String[] words = sentence.split("\\s+");
+
+            for (String word : words) {
+
+                if (word.length() > longestWord.length()) {
+
+                    longestWord = word;
+                }
+            }
+        }
+        return longestWord;
+    }
+
+    public int getWordsAmount() {
+        int wordcount = 0;
+        for (String sentence : charList) {
+
+            String[] words = sentence.split("\\s+");
+            wordcount += words.length;
+        }
+        return wordcount;
+    }
+
 
 }
