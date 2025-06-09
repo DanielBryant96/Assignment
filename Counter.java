@@ -29,7 +29,7 @@ public class Counter {
     }
 
     public String getLongestWord() {
-        String longestWord = null;
+        String longestWord = "";
 
         for (String sentence : charList) {
 
